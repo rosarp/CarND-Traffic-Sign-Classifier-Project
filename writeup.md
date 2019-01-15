@@ -256,7 +256,7 @@ For the fourth image, the model is relatively sure that this is a `Road narrows 
 | .00				    | Speed limit (30km/h)    						|
 
 For the fifth image, the model is relatively sure that this is a `Bicycles crossing` sign (probability of 0.98), **but** the image contains a `Wild animals crossing` sign. The top five soft max probabilities were
-![alt text][image8]
+![alt text][image12]
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
