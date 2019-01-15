@@ -27,11 +27,11 @@ The goals / steps of this project are the following:
 [image6]: ./examples/random_gen_img2.png "Random Generated image"
 [image7]: ./examples/barchart2.png "Barchart Visualization"
 
-[image8]: ./online-samples/2.ppm "Grayscaling"
-[image9]: ./online-samples/4.ppm "Grayscaling"
-[image10]: ./online-samples/23.ppm "Grayscaling"
-[image11]: ./online-samples/24.ppm "Grayscaling"
-[image12]: ./online-samples/31.ppm "Grayscaling"
+[image8]: ./online-samples/2.png "Online samples"
+[image9]: ./online-samples/4.png "Online samples"
+[image10]: ./online-samples/23.png "Online samples"
+[image11]: ./online-samples/24.png "Online samples"
+[image12]: ./online-samples/31.png "Online samples"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -187,7 +187,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image8] ![alt text][image9] ![alt text][image10] 
 ![alt text][image11] ![alt text][image12]
 
-Test accuracy given was 40% on this set.
+Test accuracy given was 80% on this set. The last image might be difficult because of rough similarity in structure of bicycles & animal jumping, but it classified closely to the crossing sign. 
 
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
@@ -196,29 +196,75 @@ Here are the results of the prediction:
 
 | Image							|	 Prediction  								| 
 |:-----------------------------:|:---------------------------------------------:| 
-| Speed limit (50km/h) 			|    									| 
-| Speed limit (70km/h) 			|  										|
-| Slippery road  				| 											|
-| Road narrows on the right 	| 					 				|
-| Wild animals crossing 		|       							|
+| Speed limit (50km/h) 			| Speed limit (50km/h)   						| 
+| Speed limit (70km/h) 			| Speed limit (70km/h) 							|
+| Slippery road  				| Slippery road 								|
+| Road narrows on the right 	| Road narrows on the right 	 				|
+| Wild animals crossing 		| **Bicycles crossing**      					|
 
 
-The model was able to correctly guess 2 of the 5 traffic signs, which gives an accuracy of 40%. The accuracy on the test set predicted with 93.4% accuracy.
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. 
+
+The accuracy on the test set predicted with 93.4% accuracy.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the section named `Output Top 5 Softmax Probabilities For Each Image Found on the Web` of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a `Speed limit (50km/h)` sign (probability of 0.99), and the image does contain a `Speed limit (50km/h)` sign. The top five soft max probabilities were
+![alt text][image8]
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			|    									| 
-| .20     				|  										|
-| .05					| 											|
-| .04	      			|  					 				|
-| .01				    |        							|
+| .99         			| Speed limit (50km/h)  						| 
+| .00     				| Speed limit (30km/h) 							|
+| .00					| Speed limit (80km/h) 							|
+| .00	      			| Speed limit (60km/h) 			 				|
+| .00				    | Bicycles crossing    							|
 
+For the second image, the model is relatively sure that this is a `Speed limit (70km/h)` sign (probability of 0.99), and the image does contain a `Speed limit (70km/h)` sign. The top five soft max probabilities were
+![alt text][image9]
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			| Speed limit (70km/h)  						| 
+| .00     				| No vehicles 									|
+| .00					| Speed limit (30km/h) 							|
+| .00	      			| Speed limit (50km/h) 			 				|
+| .00				    | Speed limit (20km/h) 			 				|
+
+For the third image, the model is relatively sure that this is a `Slippery road` sign (probability of 0.97), and the image does contain a `Slippery road` sign. The top five soft max probabilities were
+![alt text][image10]
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .97         			| Slippery road   								| 
+| .024     				| Priority road 								|
+| .003					| Bicycles crossing 							|
+| .00	      			| Wild animals crossing 		 				|
+| .00				    | Double curve 									|
+
+For the fourth image, the model is relatively sure that this is a `Road narrows on the right` sign (probability of 0.98), and the image does contain a `Road narrows on the right` sign. The top five soft max probabilities were
+![alt text][image11]
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .98         			| Road narrows on the right  					| 
+| .008     				| General caution 								|
+| .004					| Traffic signals 								|
+| .00	      			| Road work 			 						|
+| .00				    | Speed limit (30km/h)    						|
+
+For the fifth image, the model is relatively sure that this is a `Bicycles crossing` sign (probability of 0.98), **but** the image contains a `Wild animals crossing` sign. The top five soft max probabilities were
+![alt text][image8]
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .98         			| Bicycles crossing  							| 
+| .01     				| Wild animals crossing 						|
+| .00					| Slippery road 								|
+| .00	      			| Road work 			 						|
+| .00				    | Beware of ice/snow    						|
 
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
